@@ -1,83 +1,106 @@
 🔍 Overview
-This project explores a supervised machine learning approach to predicting loan approval decisions using financial and risk-based metrics. The model is trained using a decision tree classifier on a structured dataset and provides an interpretable rule-based system for decision-making.
+This project explores a supervised machine learning approach to predict loan approval outcomes based on financial and credit-related variables. By using a decision tree classifier, the model produces human-readable rules, helping both developers and stakeholders understand how decisions are made.
 
 🗂 Dataset
-Source: Kaggle — Financial Risk for Loan Approval
+Source: Kaggle - Financial Risk for Loan Approval
 
-Records: 20,000 synthetic entries
+Size: 20,000 synthetic records
 
-Target Variable: LoanApproved (1 = Approved, 0 = Rejected)
+Target Variable: LoanApproved
 
-Features Used:
+1 = Approved
 
+0 = Rejected
+
+🔢 Key Features Used
 RiskScore
 
 DebtToIncomeRatio
 
 TotalDebtToIncomeRatio
 
-(plus optional features for experimentation)
+(Plus additional optional features explored for experimentation)
 
-🎯 Project Goals
-Build an accurate and interpretable loan approval model using a decision tree.
+🎯 Goals
+Develop an accurate and interpretable decision tree model for loan approval prediction
 
-Identify the most influential features contributing to approval decisions.
+Identify the most influential financial indicators
 
-Explore how model performance changes with tree depth and feature selection.
+Understand how tree depth and feature selection impact performance
 
-Determine if a minimalist model can perform nearly as well as a full-feature model.
+Evaluate whether a minimalist model can rival a full-feature model
 
 ⚙️ Methodology
-Preprocessed categorical features with one-hot encoding (where needed).
+One-hot encoded categorical features where necessary
 
-Trained decision tree models with various depths (max_depth=None, max_depth=5, etc.).
+Trained decision tree classifiers with various depths (max_depth=None, max_depth=5, etc.)
 
-Evaluated models using accuracy, feature importance, and visualization of the tree.
+Evaluated using:
 
-Analyzed feature correlation to assess redundancy.
+Accuracy
 
-Compared performance using:
+Feature importance
+
+F1-score, precision, recall
+
+Decision tree visualization
+
+Performed feature correlation analysis to evaluate redundancy
+
+Compared performance across different feature subsets:
 
 RiskScore alone
 
-Risk + Debt-to-Income ratios
+RiskScore + Debt Ratios
 
-All features
+All available features
 
 📈 Results
-Best accuracy: ~98.7% on test set with max_depth=None using 3 features.
+Best accuracy: ~98.7% with max_depth=None using just 3 features
 
-Single feature model (RiskScore) achieved 97.5% accuracy — making it a strong solo predictor.
+Minimal model (only RiskScore) achieved 97.5% accuracy
 
-Correlation analysis showed low-to-moderate correlation between RiskScore, DebtToIncomeRatio, and TotalDebtToIncomeRatio, confirming non-redundancy.
+Feature correlation showed RiskScore, DebtToIncomeRatio, and TotalDebtToIncomeRatio are not strongly redundant (low-moderate correlation)
 
-Decision tree visualizations clearly revealed interpretable thresholds like:
+Interpretable rules extracted from tree visualization:
 
 RiskScore <= 44.9 → likely rejection
 
 RiskScore > 46.7 → likely approval
 
 🧠 Key Insights
-RiskScore is the dominant factor in loan approval decisions.
+RiskScore is by far the most influential predictor in the dataset
 
-Debt-to-income metrics offer slight improvements but add complexity.
+Debt ratio features contribute marginal improvements
 
-A simple model with a few well-chosen features can perform nearly as well as a full model.
+Simpler models can achieve competitive performance while remaining interpretable
 
-Decision trees offer a transparent way to turn models into business rules.
+Decision trees provide a transparent and explainable path to automated decision systems
 
-📌 Next Steps (Optional)
-Compare with ensemble models (e.g., Random Forests or XGBoost).
+🔮 Next Steps (Planned: Phase 2 & 3)
+Phase 2: Compare against ensemble models such as:
 
-Use cross-validation for more robust evaluation.
+Random Forest
 
-Build a lightweight demo app to simulate predictions.
+Gradient Boosting (XGBoost / LightGBM)
 
-Explore fairness by evaluating performance across demographic subgroups (if data allows).
+Apply cross-validation and hyperparameter tuning for robust evaluation
+
+Explore model fairness across subgroups (if demographic data is available)
+
+Build a lightweight CLI or web demo for real-time predictions
+
+Phase 3: Explore deep learning architectures to uncover deeper feature interactions and non-linear patterns using:
+
+Fully connected neural networks
+
+Additional hidden layers and optimizers
+
+Performance comparison with traditional ML models
 
 🧰 Tech Stack
 Python 3
 
 pandas, scikit-learn, matplotlib, seaborn
 
-Jupyter Notebook
+Jupyter Notebook / HTML Report
